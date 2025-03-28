@@ -1,0 +1,22 @@
+{
+  "name": "react-learning",
+  "version": "1.0.0",
+  "description": "react learning",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahuldhaniramyadav/react-learning.git"
+  },
+  "author": "Rahul yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahuldhaniramyadav/react-learning/issues"
+  },
+  "homepage": "https://github.com/rahuldhaniramyadav/react-learning#readme",
+  "devDependencies": {
+    "parcel": "^2.14.2"
+  }
+}
