@@ -11,14 +11,14 @@ const heading = (<h1 id="hea">
 
 //React Component 
 
-const Heading = () => (
+const Heading = () => {
   <div>
     <h1 id="heading1">Heading H1</h1>
     <span>span tag</span>
   </div>
-);
+};
 
-const Heading2 = () => (
+const Heading2 = () => {
   <>
   <h3 id="heading2">Heading H2</h3>
   {/* // component compositions - adding component inside another component */}
@@ -29,7 +29,7 @@ const Heading2 = () => (
   {/*  */}
   <Rahul />
   </>
-);
+};
 
 function Rahul() {
   return (
