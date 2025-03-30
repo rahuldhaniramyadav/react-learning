@@ -57,19 +57,16 @@ const Main = () => {
 
   }
 
-  if (restList.length === 0) {
-    return (<RestShipperUI />);
-  }
-
-  return (
+  //Condition Rendering
+  return restList.length === 0 ? <RestShipperUI /> : (
     <main>
-      <button  onClick={() => {
+      <button className="filter-btn" onClick={() => {
         const result  = restList.filter((rest) => {
         return rest.info.avgRating > 4.2;
       })
       setRestList(result);
       }}>Filter </button>
-      <button onClick={filterFun}>Filter with create function name</button>
+      <button className="filter-btn" onClick={filterFun}>Filter with create function name</button>
       <div className="res-container">
         {
           // restList.map((restrautItem) => <RestaurantCard key={restrautItem.data.id} resData={restrautItem} />)
