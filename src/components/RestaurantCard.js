@@ -17,7 +17,8 @@ const RestaurantCard = (pro) => {
       <img className="res-image" src={CDN_IMAGE+cloudinaryImageId}  alt="resaurant" />
       <h3>{name}</h3>
       <h4>{cuisines.join(', ')}</h4>
-      <span>₹{costForTwo / 100} For TWO</span>
+      {/* <span>₹{costForTwo / 100} For TWO</span> */}
+      <span>{costForTwo}</span>
       <p>{avgRating}</p>
       {/* {LOGO_URL}
       <Rahu /> */}
