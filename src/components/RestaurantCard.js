@@ -5,9 +5,9 @@ const RestaurantCard = (pro) => {
 
   // console.log(pro);
   // console.log(pro.resData);
-  // console.log(pro.resData.data);
+  // console.log("RAHUL" , pro.resData.info);
 
-  const { name, cuisines, costForTwo,  avgRating, cloudinaryImageId} = pro.resData.data;
+  const { name, cuisines, costForTwo,  avgRating, cloudinaryImageId} = pro.resData.info;
 
   // const { resData } = ;
   // console.log(resData);

@@ -1,39 +1,80 @@
-import { useState } from "react";
-import restrautArr from "../utilis/restaurantdata";
+import { useEffect, useState } from "react";
+import restrautArr from "../utilis/restaurantdata"; // this not need as we are fetching the real time api data
 import RestaurantCard from "./RestaurantCard";
+import RestShipperUI from "./RestShipperUI";
 
 const Main = () => {
 
-  // local state variable - super powerful variable
-  const [restList, setRestList] = useState(restrautArr);
-
-  // const restArray = useState(restrautArr);
-  // const [restList, setRestList] = restArray;
-  // const restList  =  restArray[0];
-  // const setRestList  =  restArray[1];
+  const [restList, setRestList] = useState([]);
 
   const filterFun = () => {
     const result  = restList.filter((rest) => {
-      return rest.data.avgRating > 3;
+      return rest.info.avgRating === 4.5;
     })
     setRestList(result);
+  }
+
+  useEffect(() => {
+    fetchApiData();
+  }, []);
+
+  // call the api with default promise of fetch
+  // const fetchApiData = () => {
+  //   fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING").then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error("Not able to fetched");
+  //     }
+  //     return response.json();
+  //   }).then((data) => {
+  //     console.log(data);
+  //     // option chaining it is like isset of array in php for understanding not fully but we can understand it
+  //     // console.log(data?.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+  //     setRestList(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  //   }).catch((error) => {
+  //     console.log("There is sone error", error);
+  //     // the error due CORS policy
+  //     //There is sone error TypeError: Failed to fetch at fetchApiData (Main.js:22:5) at eval (Main.js:17:5)
+
+  //   })
+  // };
+
+  const fetchApiData = async () => {
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+
+    // enabled the CORS via chrome extension to fetch the data, else it was giving the below error 
+    // Access to fetch at 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING' from origin 'http://localhost:1234' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+
+    console.log(data);
+    const jsonData = await data.json();
+
+    // console.log(jsonData);
+
+    // option chaining - if thekey is null or undefined expression will short-circuit and return undefined, without throwing an error.
+    console.log(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setRestList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+    //here unless data is loading we want to show something which help to make user wait for the response so we use shimmer UI
+
+  }
+
+  if (restList.length === 0) {
+    return (<RestShipperUI />);
   }
 
   return (
     <main>
       <button  onClick={() => {
         const result  = restList.filter((rest) => {
-        return rest.data.avgRating > 4;
+        return rest.info.avgRating > 4.2;
       })
       setRestList(result);
       }}>Filter </button>
       <button onClick={filterFun}>Filter with create function name</button>
       <div className="res-container">
         {
-          // restrautArr.map((restrautItem) => <RestaurantCard key={restrautItem.data.id} resData={restrautItem} />)
-          restList.map((restrautItem) => <RestaurantCard key={restrautItem.data.id} resData={restrautItem} />)
+          // restList.map((restrautItem) => <RestaurantCard key={restrautItem.data.id} resData={restrautItem} />)
+          restList.map((restrautItem) => <RestaurantCard key={restrautItem.info.id} resData={restrautItem} />)
         }
-        {/* <RestaurantCard resData = {restrautArr[0]} /> */}
       </div>
     </main>
   )
