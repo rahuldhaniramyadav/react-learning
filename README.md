@@ -1,1 +1,1 @@
-# This is self learning tutorial with help/guidance of Namaste React
+# This is self learning code REPO with help/guidance of Namaste React
