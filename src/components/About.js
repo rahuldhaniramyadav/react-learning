@@ -24,6 +24,7 @@ class About extends React.Component {
       <div>
         <h1>About us </h1>
         <UserFun name={" Function "} location={" Fucntion INDIA  "} />
+        {/* The dom manipulation will be happend on batches once the contructor, render method of class component is called */}
         <UserClass name={" R "} location={" Class INDIA 1 "} />
         <UserClass name={" Y "} location={" Class INDIA 2 "} />
         <NewUserClass />
