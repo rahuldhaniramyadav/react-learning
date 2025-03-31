@@ -3,6 +3,7 @@ import UserClass from "./UserClass";
 import "../utilis/about.module.css"; // need to check how we can import css file for the single component
 // import { Component } from "react"; // it shoudl work but it is not working
 import React from "react";
+import NewUserClass from "./NewUserClass";
 
 //change the About to class based component from function based
 class About extends React.Component {
@@ -25,6 +26,7 @@ class About extends React.Component {
         <UserFun name={" Function "} location={" Fucntion INDIA  "} />
         <UserClass name={" R "} location={" Class INDIA 1 "} />
         <UserClass name={" Y "} location={" Class INDIA 2 "} />
+        <NewUserClass />
       </div>
     )
   }
