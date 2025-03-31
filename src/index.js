@@ -42,8 +42,12 @@ const routerProv = createBrowserRouter([
         path: "/contact",
         element: <Contact />
       },
+      {
+        path: "*",
+        element: <NotFound /> //just we have added in chldren route now we can show the header as well
+      }
     ],
-    errorElement: <NotFound /> // it is used to show the error
+    errorElement: <NotFound /> // after adding the child still we are unable to get the header for the error element but it is showing NOt founc page, so now we will add star(*) in the children route
   }
   // the below code is not useful as we are hadling error with errorElement
   // {
