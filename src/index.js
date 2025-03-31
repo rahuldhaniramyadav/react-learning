@@ -32,7 +32,8 @@ const routerProv = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />
+        element: <Main />,
+        errorElement: <NotFound /> //here as well header component is not visible
       },
       {
         path: "/about",
