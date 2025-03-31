@@ -9,16 +9,16 @@ class UserClass extends React.Component {
       count: 0,
       count2: 1,
     }
-    console.log("Child Constructor");
+    console.log(this.props.name + "Child Constructor");
   }
 
   // At the end componentDidMount in the class so basically it is used for the api call 
   componentDidMount() {
-    console.log("Child componentDidMount");
+    console.log(this.props.name + "Child componentDidMount");
   }
 
   render() {
-    console.log("Child Render");
+    console.log(this.props.name + "Child Render");
     const {name, location} = this.props;
     const {count, count2} = this.state;
     return(
