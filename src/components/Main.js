@@ -62,7 +62,7 @@ const Main = () => {
   }
 
   //Condition Rendering
-  return restList.length === 0 ? <RestShipperUI /> : (
+  return restListFilte.length === 0 ? <RestShipperUI /> : (
     <main>
       <div className="searchWrapper">
         {/* <input type="text" className="search-bar1" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} /> */}
@@ -72,7 +72,7 @@ const Main = () => {
             return res.info.name.toLowerCase().includes(searchFilter.toLowerCase());
           });
           if (filterData.length === 0) {
-            return <NotFound />
+            // return <NotFound />
           }
           setRestListFilter(filterData);
         }}>Filter Data</button>
