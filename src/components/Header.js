@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <img className="logo" src={LOGO_URL} alt="Own Delivery App" />
+      <Link to="/"><img className="logo" src={LOGO_URL} alt="Own Delivery App" /></Link>
       <h1> RY Food Delivery App</h1>  
       {/* <nav>
         <ul className="menu-items">
@@ -44,6 +44,5 @@ const Header = () => {
     </header>
   )
 }
-
 
 export default Header;

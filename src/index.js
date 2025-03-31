@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"
+import Restaurant from "./components/Restaurant";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -46,6 +47,10 @@ const routerProv = createBrowserRouter([
       {
         path: "*",
         element: <NotFound /> //just we have added in chldren route now we can show the header as well
+      },
+      {
+        path: "/restaurant/:restId",
+        element: <Restaurant /> //just we have added in chldren route now we can show the header as well
       }
     ],
     errorElement: <NotFound /> // after adding the child still we are unable to get the header for the error element but it is showing NOt founc page, so now we will add star(*) in the children route
