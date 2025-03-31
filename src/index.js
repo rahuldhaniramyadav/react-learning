@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"
@@ -19,7 +19,7 @@ const FoodLayout = () => {
   return(
     <>
       <Header />
-      <Main />
+      <Outlet />
     </>
   )
 }
@@ -29,22 +29,27 @@ const routerProv = createBrowserRouter([
   {
     path: "/",
     element: <FoodLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Main />
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      },
+    ],
     errorElement: <NotFound /> // it is used to show the error
-  },
-  {
-    path: "/about",
-    element: <About />
-  },
-  {
-    path: "/contact",
-    element: <Contact />
-  },
-  // if we are not using start(*) then any random url will show error 
-  // http://localhost:1234/mmm // listenToRuntimeErrors.js:137 Error handled by React Router default ErrorBoundary
-  {
-    path: "*",
-    element: <NotFound />
   }
+  // the below code is not useful as we are hadling error with errorElement
+  // {
+  //   path: "*",
+  //   element: <NotFound />
+  // }
 ])
 
 
