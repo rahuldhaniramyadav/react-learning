@@ -1,5 +1,6 @@
 import UserFun from "./UserFun";
 import UserClass from "./UserClass";
+import "../utilis/about.module.css"; // need to check how we can import css file for the single component
 
 const About = () => {
   return(
