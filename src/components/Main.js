@@ -3,6 +3,7 @@ import restrautArr from "../utilis/restaurantdata"; // this not need as we are f
 import RestaurantCard from "./RestaurantCard";
 import RestShipperUI from "./RestShipperUI"; // Shimmer UI
 import {GET_RESTAURANT} from "../utilis/constant";
+import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
 
 const Main = () => {
 
@@ -38,6 +39,12 @@ const Main = () => {
     //here unless data is loading we want to show something which help to make user wait for the response so we use shimmer UI
 
   }
+
+
+  // adding custom hooks to check the online and offline based on internet connections
+  const internetConn = checkOnlineStatus();
+
+  if(!internetConn) { return(<h1>You are offline Please check your internet connections</h1>); }
 
   //Condition Rendering
   return restListFilte.length === 0 ? <RestShipperUI /> : (
