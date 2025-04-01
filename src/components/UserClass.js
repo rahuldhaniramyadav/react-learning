@@ -24,21 +24,30 @@ class UserClass extends React.Component {
     const json = await data.json();
 
     console.log(json);
+    // this.setState({
+    //   gitUser: {
+    //     name: json.name,
+    //     location: json.location,
+    //     avatar_url: json.avatar_url
+    //   }
+    // })
     this.setState({
-      gitUser: {
-        name: json.name,
-        location: json.location,
-        avatar_url: json.avatar_url
-      }
+      gitUser: json
     })
+
+    this.setInter = setInterval(() => {
+      console.log("A");
+    }, 1000); // it will continus running wheather you move to other component still it is working, so we need to clear the interval
   }
 
   componentDidUpdate() {
     console.log(this.props.name + "component Did Update");
   }
 
+  //mostly it used to remove the variable or timer which is created by self
   componentWillUnmount() {
     console.log(this.props.name + "Unmount the component");
+    clearInterval(this.setInter); // this will create the interval in class we can access the propert nly with this keyword
   }
 
   render() {
