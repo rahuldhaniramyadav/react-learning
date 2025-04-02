@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"
 import Restaurant from "./components/Restaurant";
+// import GroceryMart from "./components/GroceryMart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -15,6 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Now we are building food livery app so we are creating a plan based on that
 
 // /Config Driven UI
+
+// creating a differtn bundle for the grocery to make our app to optimize
+const Grocery = lazy(() => import("./components/GroceryMart"));
 
 const FoodLayout = () => {
   return(
@@ -51,6 +55,14 @@ const routerProv = createBrowserRouter([
       {
         path: "/restaurant/:restId",
         element: <Restaurant /> //just we have added in chldren route now we can show the header as well
+      },
+      {
+        path:"/grocery",
+        element: (
+          <Suspense fallback={<h1>Loadind...</h1>}>
+            <Grocery />
+          </Suspense>
+        )
       }
     ],
     errorElement: <NotFound /> // after adding the child still we are unable to get the header for the error element but it is showing NOt founc page, so now we will add star(*) in the children route

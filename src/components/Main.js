@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import restrautArr from "../utilis/restaurantdata"; // this not need as we are fetching the real time api data
+// import restrautArr from "../utilis/restaurantdata"; // this not need as we are fetching the real time api data
 import RestaurantCard from "./RestaurantCard";
 import RestShipperUI from "./RestShipperUI"; // Shimmer UI
 import {GET_RESTAURANT} from "../utilis/constant";

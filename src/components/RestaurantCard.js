@@ -10,7 +10,7 @@ const RestaurantCard = (pro) => {
   // console.log("RAHUL" , pro.resData.info);
 
   const restId = pro.restId; // fetching the dynamic restaurant ID
-  console.log(restId) //resData
+  // console.log(restId) //resData
 
   const { name, cuisines, costForTwo,  avgRating, cloudinaryImageId} = pro.resData.info;
 

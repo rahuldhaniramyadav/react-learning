@@ -36,7 +36,9 @@ const Header = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li><a href="/contact">Contact us with anchor link</a></li> {/** it is used to show this anchoring is reloading the webpage but LINK component is reredering the component  */}
+          <li><Link to="/grocery">Grocery</Link></li>
+          {/* <li><a href="/contact">Contact us with anchor link</a></li>  */}
+          {/** it is used to show this anchoring is reloading the webpage but LINK component is reredering the component  */}
           <li>Cart</li>
           <button className="loginStatu" onClick={() => {
             loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");

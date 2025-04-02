@@ -15,7 +15,7 @@ const Restaurant = () => {
 
   const menuItems = useRestaurantMenu(restId); //created custom hooks to pass the data
 
-  console.log(menuItems);debugger;
+  // console.log(menuItems);debugger;
   if (menuItems === null) { return <RestShipperUI />}
 
   const {name, cuisines, costForTwoMessage, avgRating} = menuItems.data?.cards[2]?.card.card.info;
