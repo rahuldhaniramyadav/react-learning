@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import restrautArr from "../utilis/restaurantdata"; // this not need as we are fetching the real time api data
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {RestaurantCardWithPromoted} from "./RestaurantCard";
 import RestShipperUI from "./RestShipperUI"; // Shimmer UI
 import {GET_RESTAURANT} from "../utilis/constant";
 import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
@@ -11,6 +11,8 @@ const Main = () => {
   const [restListFilte, setRestListFilter] = useState([]);
 
   const [searchFilter, setSearchFilter] = useState("");
+
+  const RestaurantCardWithData = RestaurantCardWithPromoted(RestaurantCard);
 
   const filterFun = () => {
     const result  = restList.filter((rest) => {
@@ -49,10 +51,10 @@ const Main = () => {
   //Condition Rendering
   return restListFilte.length === 0 ? <RestShipperUI /> : (
     <main>
-      <div className="searchWrapper">
+      <div className="searchWrapper flex">
         {/* <input type="text" className="search-bar1" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} /> */}
-        <input type="search" className="search-bar" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} />
-        <button className="filter-search-btn" onClick={() => {
+        <input type="search" className="search-bar m-2 p-2 border border-black rounded-sm" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} />
+        <button className="filter-search-btn p-2 m-2 bg-green-50" onClick={() => {
           const filterData = restList.filter((res) => {
             return res.info.name.toLowerCase().includes(searchFilter.toLowerCase());
           });
@@ -61,19 +63,25 @@ const Main = () => {
           }
           setRestListFilter(filterData);
         }}>Filter Data</button>
+        <button className="filter-btn p-2 m-2 bg-amber-200 w-[270px]" onClick={() => {
+          const result  = restList.filter((rest) => {
+          return rest.info.avgRating > 4.2;
+        })
+        setRestListFilter(result);
+        }}> Top rated restaurant </button>
       </div>
-      <button className="filter-btn" onClick={() => {
-        const result  = restList.filter((rest) => {
-        return rest.info.avgRating > 4.2;
-      })
-      setRestListFilter(result);
-      }}>Filter </button>
-      <button className="filter-btn" onClick={filterFun}>Filter with create function name</button>
-      <div className="res-container">
+      {/* <button className="filter-btn" onClick={filterFun}>Filter with create function name</button> */}
+      <div className="res-container flex flex-wrap">
         {
           // restList.map((restrautItem) => <RestaurantCard key={restrautItem.data.id} resData={restrautItem} />)
-          restListFilte.map((restrautItem) => <RestaurantCard key={restrautItem.info.id} resData={restrautItem} restId={restrautItem.info.id} />)
-        }
+          restListFilte.map((restrautItem) => {
+          {
+            return restrautItem.info?.aggregatedDiscountInfoV3 !== undefined ?
+            (<RestaurantCardWithData key={restrautItem.info.id} resData={restrautItem} restId={restrautItem.info.id} />) :
+            (<RestaurantCard key={restrautItem.info.id} resData={restrautItem} restId={restrautItem.info.id} />)
+          }
+          // <RestaurantCard key={restrautItem.info.id} resData={restrautItem} restId={restrautItem.info.id} />
+        })}
       </div>
     </main>
   )
