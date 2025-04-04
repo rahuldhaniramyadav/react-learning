@@ -2,15 +2,29 @@ import { useState } from "react";
 import { LOGO_URL } from "../utilis/constant";
 import { Link } from "react-router-dom";
 import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
+// import styled from 'styled-components'; // fetching the styled component
+// import styled from "styled-components";
 
 const Header = () => {
 
   const [loginBtn, setLoginBtn] = useState("Login");
 
+//   console.log(styled);
+//   const Button = styled.button`
+//   color: red;
+//   `;
+
+//   const Title = styled.h1`
+//   font-size: 1.5em;
+//   text-align: center;
+//   color: #BF4F74;
+// `;
+
   return (
-    <header className="header">
-      <Link to="/"><img className="logo" src={LOGO_URL} alt="Own Delivery App" /></Link>
-      <h1> RY Food Delivery App</h1>  
+    <header className="flex justify-between bg-green-50 shadow-lg mb-2 px-2">
+      <Link to="/"><img className="w-40 h-40" src={LOGO_URL} alt="Own Delivery App" /></Link>
+      {/* <Title /> */}
+      <h1 className="flex items-center"> RY Food Delivery App</h1>  
       {/* <nav>
         <ul className="menu-items">
           <li>
@@ -30,20 +44,21 @@ const Header = () => {
           }}>{loginBtn}</li>
         </ul>
       </nav> */}
-       <div className="nav-items">
-        <ul>
-          <li>Online Status: {checkOnlineStatus() ? "Online" : "Offline"}</li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/grocery">Grocery</Link></li>
+       <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="m-1 p-1">Online Status: {checkOnlineStatus() ? "Online" : "Offline"}</li>
+          <li className="m-1 p-1"><Link to="/">Home</Link></li>
+          <li className="m-1 p-1"><Link to="/about">About</Link></li>
+          <li className="m-1 p-1"><Link to="/contact">Contact</Link></li>
+          <li className="m-1 p-1"><Link to="/grocery">Grocery</Link></li>
           {/* <li><a href="/contact">Contact us with anchor link</a></li>  */}
           {/** it is used to show this anchoring is reloading the webpage but LINK component is reredering the component  */}
-          <li>Cart</li>
+          <li className="m-1 p-1">Cart</li>
           <button className="loginStatu" onClick={() => {
             loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
           }}>{loginBtn}</button>
         </ul>
+           {/* <Button />  */}
       </div>
     </header>
   )
