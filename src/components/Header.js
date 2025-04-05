@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utilis/constant";
 import { Link } from "react-router-dom";
 import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
+import LoginContext from "../utilis/helper/LoginContext";
 // import styled from 'styled-components'; // fetching the styled component
 // import styled from "styled-components";
 
 const Header = () => {
 
   const [loginBtn, setLoginBtn] = useState("Login");
+
+  const { userName } = useContext(LoginContext);
 
 //   console.log(styled);
 //   const Button = styled.button`
@@ -57,6 +60,7 @@ const Header = () => {
           <button className="loginStatu" onClick={() => {
             loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
           }}>{loginBtn}</button>
+          <li>{userName}</li>
         </ul>
            {/* <Button />  */}
       </div>

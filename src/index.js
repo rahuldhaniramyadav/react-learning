@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useContext, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"
 import Restaurant from "./components/Restaurant";
+import LoginContext from "./utilis/helper/LoginContext";
 // import GroceryMart from "./components/GroceryMart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,11 +22,25 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const Grocery = lazy(() => import("./components/GroceryMart"));
 
 const FoodLayout = () => {
+
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+
+    const data = {
+      username: "Rahul"
+    }
+    setUserName(data.username);
+  }, []);
+
+
   return(
     <>
+    <LoginContext.Provider value={{userName, setUserName}}>
       <Header />
       <Outlet />
-    </>
+    </LoginContext.Provider>
+      </>
   )
 }
 

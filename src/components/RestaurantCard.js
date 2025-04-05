@@ -1,7 +1,8 @@
 // import Rahu, {CDN_IMAGE, LOGO_URL} from "../utilis/constant";
 import { Link } from "react-router-dom";
 import {CDN_IMAGE} from "../utilis/constant";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import LoginContext from "../utilis/helper/LoginContext";
 
 const RestaurantCard = (pro) => {
 
@@ -13,6 +14,8 @@ const RestaurantCard = (pro) => {
   // console.log(restId) //resData
 
   const { name, cuisines, costForTwo,  avgRating, cloudinaryImageId} = pro.resData.info;
+
+  // const {username} = use
 
   // const { resData } = ;
   // console.log(resData);
@@ -34,10 +37,13 @@ const RestaurantCard = (pro) => {
 }
 
 export const RestaurantCardWithPromoted = (RestaurantCard) => {
+  const {userName, setUserName} = useContext(LoginContext);
+  console.log(userName);
   return (props) => {
-    console.log(props);
+    // console.log(props);
     return (
       <div className="relative">
+        <h1>UserName: {userName}</h1>
         <label className="p-2 m-2 absolute border-2 left-4 bg-black text-white">{`${props.resData.info?.aggregatedDiscountInfoV3.header} and ${props.resData.info?.aggregatedDiscountInfoV3.subHeader}`}</label>
         <RestaurantCard {...props} />
       </div>

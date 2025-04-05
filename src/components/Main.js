@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 // import restrautArr from "../utilis/restaurantdata"; // this not need as we are fetching the real time api data
 import RestaurantCard, {RestaurantCardWithPromoted} from "./RestaurantCard";
 import RestShipperUI from "./RestShipperUI"; // Shimmer UI
 import {GET_RESTAURANT} from "../utilis/constant";
 import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
+import LoginContext from "../utilis/helper/LoginContext";
 
 const Main = () => {
 
@@ -13,6 +14,8 @@ const Main = () => {
   const [searchFilter, setSearchFilter] = useState("");
 
   const RestaurantCardWithData = RestaurantCardWithPromoted(RestaurantCard);
+
+  const {userName, setUserName} = useContext(LoginContext);
 
   const filterFun = () => {
     const result  = restList.filter((rest) => {
@@ -69,6 +72,9 @@ const Main = () => {
         })
         setRestListFilter(result);
         }}> Top rated restaurant </button>
+      </div>
+      <div>
+        <input className="border border-black p-2" type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
       </div>
       {/* <button className="filter-btn" onClick={filterFun}>Filter with create function name</button> */}
       <div className="res-container flex flex-wrap">
