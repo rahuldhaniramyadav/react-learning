@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import RestShipperUI from "./RestShipperUI"; // Shimmer UI
+import MenuHeading from "../components/MenuHeading"; // it is not working - import MenuHeading from ".MenuHeading"
 import useRestaurantMenu from "../utilis/helper/useRestaurantMenu";
 
 // Here we are fetching the data via API and and display data so we can say here we are doing 2 oprration we need to follow the modularity function (diving the the code in chunks(small logic))
@@ -21,15 +22,22 @@ const Restaurant = () => {
   const {name, cuisines, costForTwoMessage, avgRating} = menuItems.data?.cards[2]?.card.card.info;
   const {itemCards} = menuItems.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
+  // console.log(menuItems.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards);
+  const categories = (menuItems.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards).filter((cat) => cat.card?.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+
+  console.log(categories)
+
   return(
-    <div>
-      <h1>Name: {name}</h1>
-      <h2>Cuisines: {cuisines.join(", ")}</h2>
-      <h3>Cost For Two: {costForTwoMessage}</h3>
-      <h4>avgRating: {avgRating}</h4>
+    <div className="text-center">
+      <h1 className="font-bold">{name}</h1>
+      <h2>Cuisines: {cuisines.join(", ")}, {costForTwoMessage}</h2>
+      {
+        categories.map((cat) => <MenuHeading key={cat.card.card.title} data={cat.card.card} />
+      )}
+      {/* <h4>avgRating: {avgRating}</h4>
       <ul>
         {itemCards.map(item => <li key={item.card.info.id}>{item.card.info.name + " - Rs." + item.card.info.price}</li>)}
-      </ul>
+      </ul> */}
     </div>
   );
 
