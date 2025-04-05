@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utilis/constant";
 import { Link } from "react-router-dom";
 import checkOnlineStatus from "../utilis/helper/checkOnlineStatus";
 import LoginContext from "../utilis/helper/LoginContext";
+import { useSelector } from "react-redux";
 // import styled from 'styled-components'; // fetching the styled component
 // import styled from "styled-components";
 
@@ -11,6 +12,8 @@ const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 
   const { userName } = useContext(LoginContext);
+
+  const cartItems =  useSelector((store) => store.ourcart.items.length);
 
 //   console.log(styled);
 //   const Button = styled.button`
@@ -56,7 +59,7 @@ const Header = () => {
           <li className="m-1 p-1"><Link to="/grocery">Grocery</Link></li>
           {/* <li><a href="/contact">Contact us with anchor link</a></li>  */}
           {/** it is used to show this anchoring is reloading the webpage but LINK component is reredering the component  */}
-          <li className="m-1 p-1">Cart</li>
+          <li className="m-1 p-1">Cart ({cartItems} items)</li>
           <button className="loginStatu" onClick={() => {
             loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
           }}>{loginBtn}</button>

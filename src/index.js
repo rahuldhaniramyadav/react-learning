@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"
 import Restaurant from "./components/Restaurant";
 import LoginContext from "./utilis/helper/LoginContext";
+import { Provider } from "react-redux";
+import AppStore from "./utilis/redux/AppStore";
 // import GroceryMart from "./components/GroceryMart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,12 +37,12 @@ const FoodLayout = () => {
 
 
   return(
-    <>
-    <LoginContext.Provider value={{userName, setUserName}}>
-      <Header />
-      <Outlet />
-    </LoginContext.Provider>
-      </>
+    <Provider store={AppStore}>
+      <LoginContext.Provider value={{userName, setUserName}}>
+        <Header />
+        <Outlet />
+      </LoginContext.Provider>
+    </Provider>
   )
 }
 
