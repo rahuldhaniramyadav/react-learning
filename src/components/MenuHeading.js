@@ -1,14 +1,9 @@
-import { useState } from "react";
 import ItemCategory from "./ItemCategory";
 
-const MenuHeading = ({data}) => {
+const MenuHeading = ({data, setShowItems, showItems}) => {
 
-  console.log(data);
-
-  const [showItems, setShowItems] = useState(false);
-
-  const showItemCategory = () => {
-    setShowItems(!showItems);
+  const showItemCategory = (e) => {
+    setShowItems();
   }
   // console.log(category);
   return(
