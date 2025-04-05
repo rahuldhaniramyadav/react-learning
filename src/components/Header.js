@@ -13,7 +13,9 @@ const Header = () => {
 
   const { userName } = useContext(LoginContext);
 
-  const cartItems =  useSelector((store) => store.ourcart.items.length);
+  const cartItems =  useSelector((store) => store.ourcart.items);
+  console.log(cartItems);
+  
 
 //   console.log(styled);
 //   const Button = styled.button`
@@ -59,7 +61,7 @@ const Header = () => {
           <li className="m-1 p-1"><Link to="/grocery">Grocery</Link></li>
           {/* <li><a href="/contact">Contact us with anchor link</a></li>  */}
           {/** it is used to show this anchoring is reloading the webpage but LINK component is reredering the component  */}
-          <li className="m-1 p-1">Cart ({cartItems} items)</li>
+          <li className="m-1 p-1">Cart ({cartItems.length} items)</li>
           <button className="loginStatu" onClick={() => {
             loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
           }}>{loginBtn}</button>

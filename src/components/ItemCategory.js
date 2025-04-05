@@ -1,7 +1,13 @@
+import { useDispatch } from "react-redux";
 import { CDN_IMAGE } from "../utilis/constant";
+import { addItem } from "../utilis/redux/CartReducers";
 
 const ItemCategory = ({itemCategory}) => {
-  console.log(itemCategory);
+  const dispatch = useDispatch();
+
+  const addProductCart = (item) => {
+    dispatch(addItem(item));
+  }
   return (
     <div className="text-left">
       {itemCategory.map((itemCat) => 
@@ -12,7 +18,7 @@ const ItemCategory = ({itemCategory}) => {
             <p className="py-1 my-1">Desc: {itemCat?.card?.info?.description}</p>
           </div>
           <div className="w-3/12">
-            <button className="absolute p-2 bg-amber-100 border-2 border-gray-200 mx-auto">Add</button>
+            <button className="absolute p-2 bg-amber-100 border-2 border-gray-200 mx-auto" onClick={() => addProductCart(itemCat)}>Add</button>
             <img src={CDN_IMAGE + itemCat?.card?.info?.imageId} />
           </div>
         </div>
