@@ -10,6 +10,7 @@ import Restaurant from "./components/Restaurant";
 import LoginContext from "./utilis/helper/LoginContext";
 import { Provider } from "react-redux";
 import AppStore from "./utilis/redux/AppStore";
+import Cart from "./components/Cart";
 // import GroceryMart from "./components/GroceryMart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -80,6 +81,10 @@ const routerProv = createBrowserRouter([
             <Grocery />
           </Suspense>
         )
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       }
     ],
     errorElement: <NotFound /> // after adding the child still we are unable to get the header for the error element but it is showing NOt founc page, so now we will add star(*) in the children route
