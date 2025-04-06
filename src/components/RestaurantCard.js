@@ -6,20 +6,9 @@ import LoginContext from "../utilis/helper/LoginContext";
 
 const RestaurantCard = (pro) => {
 
-  // console.log(pro);
-  // console.log(pro.resData);
-  // console.log("RAHUL" , pro.resData.info);
-
   const restId = pro.restId; // fetching the dynamic restaurant ID
-  // console.log(restId) //resData
 
-  const { name, cuisines, costForTwo,  avgRating, cloudinaryImageId} = pro.resData.info;
-
-  // const {username} = use
-
-  // const { resData } = ;
-  // console.log(resData);
-  // console.log(resData.data);
+  const { name = "Faasos - Wraps, Rolls & Shawarma", cuisines = [], costForTwo = 250,  avgRating = '', cloudinaryImageId = ''} = pro?.resData?.info || {} ;
   return (
     <div className="res-card m-4 p-4 shadow w-[270px] bg-gray-50 hover:bg-gray-300">
       <Link key={restId} to={"/restaurant/" + restId} className="mb-4">
