@@ -4,6 +4,7 @@
   "description": "react learning",
   "scripts": {
     "test": "jest",
+    "jest-watch": "jest --watch",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },

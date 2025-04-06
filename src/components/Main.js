@@ -57,7 +57,7 @@ const Main = () => {
       <div className="searchWrapper flex">
         {/* <input type="text" className="search-bar1" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} /> */}
         <input type="search" className="search-bar m-2 p-2 border border-black rounded-sm" value={searchFilter} onChange={(e) => {setSearchFilter(e.target.value); }} />
-        <button className="filter-search-btn p-2 m-2 bg-green-50" onClick={() => {
+        <button className="filter-search-btn p-2 m-2 bg-green-50" data-testid = "searchbtn" onClick={() => {
           const filterData = restList.filter((res) => {
             return res.info.name.toLowerCase().includes(searchFilter.toLowerCase());
           });
