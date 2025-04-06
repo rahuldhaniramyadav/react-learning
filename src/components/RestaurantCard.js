@@ -38,12 +38,11 @@ const RestaurantCard = (pro) => {
 
 export const RestaurantCardWithPromoted = (RestaurantCard) => {
   const {userName, setUserName} = useContext(LoginContext);
-  console.log(userName);
   return (props) => {
     // console.log(props);
     return (
       <div className="relative">
-        <h1>UserName: {userName}</h1>
+        {/* <h1>UserName: {userName}</h1> */}
         <label className="p-2 m-2 absolute border-2 left-4 bg-black text-white">{`${props.resData.info?.aggregatedDiscountInfoV3.header} and ${props.resData.info?.aggregatedDiscountInfoV3.subHeader}`}</label>
         <RestaurantCard {...props} />
       </div>

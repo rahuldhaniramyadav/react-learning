@@ -72,8 +72,7 @@ const Main = () => {
         })
         setRestListFilter(result);
         }}> Top rated restaurant </button>
-      </div>
-      <div>
+
         <input className="border border-black p-2" type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
       </div>
       {/* <button className="filter-btn" onClick={filterFun}>Filter with create function name</button> */}
