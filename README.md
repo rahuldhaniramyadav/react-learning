@@ -20,3 +20,7 @@
       - Footer
 
 
+- Created Sign in/ Sign up form with validation
+- Created a react-router
+- confiure google firebase for the app
+- creating signup and sign in logic with firebase
