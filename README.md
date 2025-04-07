@@ -24,3 +24,7 @@
 - Created a react-router
 - confiure google firebase for the app
 - creating signup and sign in logic with firebase
+- created redux store
+- Added listner onAuthStateChanged which will work on login and logout
+- Added error component
+- Adding user icon after sign in in header
