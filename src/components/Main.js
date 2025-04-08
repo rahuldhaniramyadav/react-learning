@@ -1,11 +1,12 @@
 import Header from "./Header";
+import MainData from "./MainData";
 
 const Main = () => {
   return(
-    <>
-    <Header />
-    <div> Main component </div>
-    </>
+    <div>
+      <Header />
+      <MainData />
+    </div>
   )
 }
 

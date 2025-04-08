@@ -28,3 +28,9 @@
 - Added listner onAuthStateChanged which will work on login and logout
 - Added error component
 - Adding user icon after sign in in header
+
+- Bug fixing of logged in user cab't access login page and logged in user can't access the browser page
+- Adding unscribed logic
+- use constant for the hardcoded values
+
+- Now we create a browser page with maine section (video in backgroud and title), multiple sesction and multiple movies inside each section 
