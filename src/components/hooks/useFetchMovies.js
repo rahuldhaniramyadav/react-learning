@@ -14,7 +14,6 @@ const useFetchMovies = () => {
   const getMoviesdata = async () => {
     const data = await fetch(IMDB_MOVIE_LIST_API, IMDB_OPTIONS);
     const json = await data.json();
-    console.log(json);
     dispatch(addMovies(json.results));
   }
 }

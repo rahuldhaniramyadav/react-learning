@@ -1,0 +1,25 @@
+{
+  "movies": [
+    {
+      "name": "A11A",
+      "language": "english1",
+      "bio": "Donec",
+      "rating": 6.1,
+      "id": 1
+    },
+    {
+      "name": "Adeel Solangi",
+      "language": "english",
+      "id": "2",
+      "bio": "Donec lobortis eleifend condimentum. Cras dictum dolor lacinia lectus vehicula rutrum. Maecenas quis nisi nunc. Nam tristique feugiat est vitae mollis. Maecenas quis nisi nunc.",
+      "rating": 6.1
+    },
+    {
+      "name": "A11A",
+      "language": "english1",
+      "bio": "Donec",
+      "rating": 6.1,
+      "id": 3
+    }
+  ]
+}

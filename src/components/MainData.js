@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import BackgroundVideo from "./BackgroundVideo";
 import useFetchMovies from "./hooks/useFetchMovies";
+import useFetchPopularMovies from "./hooks/useFetchPopularMovies";
 import VideoTitle from "./VideoTitle";
 
 const MainData = () => {
 
   useFetchMovies();
+  useFetchPopularMovies();
 
-  const movies = useSelector(state => state.movies?.initialRender)
+  const movies = useSelector(state => state.movies?.initialRender);
 
   if (!movies) return;
 

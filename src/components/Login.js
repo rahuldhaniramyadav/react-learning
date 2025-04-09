@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userInfoSlice";
-import { USER_PHOTO } from "../utils/constant";
+import { BODY_IMAGE, USER_PHOTO } from "../utils/constant";
 
 
 const Login = () => {
@@ -57,7 +57,6 @@ const Login = () => {
           }).catch((error) => {
             setShowError(error.code + " => " + error.message);
           });
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -70,7 +69,7 @@ const Login = () => {
   return(
       <div className="">
         <Header />
-        <img className="" src="https://assets.nflxext.com/ffe/siteui/vlv3/98df3030-1c2b-4bd1-a2f5-13c611857edb/web/IN-en-20250331-TRIFECTA-perspective_247b6f06-c36d-4dff-a8eb-4013325c3f8e_large.jpg" alt="Body Image" />
+        <img className="" src={BODY_IMAGE} alt="Body Image" />
         <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl absolute left-0 right-0 w-3/12 mx-auto top-20 text-white p-14 bg-black opacity-90">
           <fieldset className="text-white">
             <legend className="my-4 font-bold text-2xl">{isSignIn ? "Sign In": "Sign Up"}</legend>

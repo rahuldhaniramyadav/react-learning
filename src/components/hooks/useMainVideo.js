@@ -7,8 +7,6 @@ const useMainVideo = (id) => {
 
   const dispatch = useDispatch();
 
-  console.log(id);
-
   useEffect(() => {
 
     const fetchMainVideo = async () => {

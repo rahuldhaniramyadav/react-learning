@@ -34,3 +34,5 @@
 - use constant for the hardcoded values
 
 - Now we create a browser page with maine section (video in backgroud and title), multiple sesction and multiple movies inside each section 
+
+- Now we need to implement GPT into our app

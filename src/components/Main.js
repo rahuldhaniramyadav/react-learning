@@ -1,12 +1,23 @@
+import { useSelector } from "react-redux";
+import GptSearch from "./GptSearch";
 import Header from "./Header";
 import MainData from "./MainData";
+import SecondaryComponent from "./SecondaryComponent";
 
 const Main = () => {
+
+  const isGpt = useSelector(state => state.isGpt.enableGptPage);
+
   return(
-    <div>
+    <>
       <Header />
-      <MainData />
-    </div>
+      {isGpt ? <GptSearch /> :
+      <>
+        <MainData />
+        <SecondaryComponent /> 
+        </>
+      }
+    </>
   )
 }
 
